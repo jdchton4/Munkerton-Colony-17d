@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Munker.vcxproj" Id="7b24ee00-5dcf-4311-8152-bb6385d1d2a6" />
+</Solution>
