@@ -1,4 +1,3 @@
-#pragma once
 #include "raylib.h"
 #include "world.h"
 
@@ -22,7 +21,7 @@ void RoomInit(Level& l) {
 void DrawWorld(Level& l) {
     SetTextureFilter(l.texture, TEXTURE_FILTER_ANISOTROPIC_4X);
     Rectangle sourcerect = { 0.0f, 0.0f, float(l.texture.width), float(l.texture.height) };
-    Rectangle DestRect = { -50000.0f, -50000.0f, l.height, l.height};
+    Rectangle DestRect = { -50000.0f, -50000.0f,(float) l.height, (float)l.height};
     Vector2 origin = { 0.0f, 0.0f };
     DrawTexturePro(l.texture, sourcerect, DestRect, origin, 0.0f, WHITE);
 }

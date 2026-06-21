@@ -71,7 +71,7 @@ void GenerateEnemies(Enemy& e, Player& p, Timer& t, GlobalEnemy& ge) {
 		if (t.EnemyGenTick >= ge.SpawnRate) { // when the ticker reaches the world progs determined spawnrate, spawn an enemy
 			EnemyCount++;
 			// Name; (Vector) Pos; Health; MaxHealth; Speed; SightDistance; AtkDmg 1 ; 2 ; 3 ; AtkRange ;IsAlive; In Sight; StateChange; State; Facing; CurText ; TIdle; TMove; TAtk;
-			Enemy MudEater = { "MudEater_" + std::to_string(EnemyCount), GetNewEnemyPos(p), 100.0, 100.0, 3.0f, 900.0, 4, 5, 6, 30.0f, true, false, false, Enemy::IDLE, Enemy::NO_DIR, e.TextureIdle, e.TextureIdle, e.TextureIdle };
+			Enemy MudEater = { "MudEater_" + std::to_string(EnemyCount), GetNewEnemyPos(p), 100.0, 100.0, 3.0f, 900.0, 4, 5, 6, 30, true, false, false, Enemy::IDLE, Enemy::NO_DIR, e.TextureIdle, e.TextureIdle, e.TextureIdle };
 			ActiveEnemies.push_back(MudEater);
 			t.EnemyGenTick = 0; // reset enemy spawn timer for the next one
 		}
@@ -79,17 +79,18 @@ void GenerateEnemies(Enemy& e, Player& p, Timer& t, GlobalEnemy& ge) {
 	}
 	return;
 }
+// test
 // Generates a random position for an enemy to spawn in
 Vector2 GetNewEnemyPos(Player& p) {
 	Vector2 NewEnemyPos = { 0.0f, 0.0f };
 	float GenRadiusMax = 900.0f;
 	float GenRadiusMin = 700.0f;
 
-	float RandomAngle = GetRandomValue(0, 360) * ((float)PI / (float)180.0);
+	float RandomAngle = GetRandomValue(0, 360) * ((float)PI / (float)180.0); 
 	float RandomRadius = GetRandomValue((float)GenRadiusMin, (float)GenRadiusMax);
 
-	NewEnemyPos.x = p.Pos.x + RandomRadius * std::cosf(RandomAngle); // spawns enemy random distance ( rad ) and angle ( cos ) away
-	NewEnemyPos.y = p.Pos.y + RandomRadius * std::sinf(RandomAngle);// spawns enemy random distance ( rad ) and angle ( sin ) away
+	NewEnemyPos.x = p.Pos.x + RandomRadius * std::cos(RandomAngle); // spawns enemy random distance ( rad ) and angle ( cos ) away
+	NewEnemyPos.y = p.Pos.y + RandomRadius * std::sin(RandomAngle);// spawns enemy random distance ( rad ) and angle ( sin ) away
 
 	return NewEnemyPos;
 }
